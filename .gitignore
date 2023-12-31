@@ -1,0 +1,4 @@
+backend/data/backend-cratedb/
+backend/data/backend-mongodb/
+backend/data/backend-postgresql/
+__pycache__
