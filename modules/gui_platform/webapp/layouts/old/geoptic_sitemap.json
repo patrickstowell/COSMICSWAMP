@@ -1,0 +1,15 @@
+{
+    "title": "Site-Map",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "gis:erosion",
+    "order": 31,
+    "widgets": [
+        {
+            "id": "geoptic-sitemap",
+            "type": "geoptic_sitemap",
+            "data": "",
+            "x":0, "y":0, "w":20, "h":10
+        }
+    ]
+}    

@@ -1,0 +1,9 @@
+{
+    "title": "Features",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "line-md:home-md-twotone",
+    "order": 24,
+    "widgets": [
+    ]
+}    

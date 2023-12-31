@@ -1,0 +1,54 @@
+{
+    "id": "entity-editor",
+    "title": "Entity Editor",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "line-md:edit-twotone",
+    "order": 4,
+    "functions": [
+        {
+            "id": "new_entity",
+            "type": "new_entity",
+            "data": ""
+        }
+    ],    
+    "widgets": [
+        {
+            "id": "pathset",
+            "type": "orion_path_set",
+            "data": "",
+            "x":0, "y":0, "w":7, "h":1, "static": true
+        },
+        {
+            "id": "serviceset",
+            "type": "orion_service_set",
+            "data": "",
+            "x":7, "y":0, "w":7, "h":1, "static": true
+        },
+        {
+            "id": "entityset",
+            "type": "orion_entity_set",
+            "data": "",
+            "x":0, "y":1, "w":14, "h":1, "static": true
+        },
+        {
+            "id": "entityview",
+            "type": "orion_entity_view",
+            "data": "",
+            "x":0, "y":6, "w":6, "h":6, "static": false
+        },
+        {
+            "id": "attributeview",
+            "type": "orion_attribute_view",
+            "data": "",
+            "x":0, "y":12, "w":12, "h":18, "static": false
+        }
+        ,
+        {
+            "id": "entitymap",
+            "type": "orion_current_location_map",
+            "data": "",
+            "x":0, "y":8, "w":6, "h":6, "static": false
+        }
+    ]
+}

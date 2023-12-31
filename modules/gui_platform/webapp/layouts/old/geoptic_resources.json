@@ -1,0 +1,22 @@
+{
+    "title": "Resources",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "gis:network",
+    "order": 1100,
+    "widgets": [
+        {
+            "id": "defra_link_card",
+            "type": "link_card",
+            "data": {
+                "url": "https://environment.data.gov.uk/DefraDataDownload/?Mode=survey",
+                "label": "DEFRA GIS",
+                "icon_color": "#999",
+                "icon_size": 60,
+                "icon": "gis:photogrammetry",
+                "className": "link-card"
+            },
+            "x":0, "y":0, "w":6, "h":17
+        }
+    ]
+}    

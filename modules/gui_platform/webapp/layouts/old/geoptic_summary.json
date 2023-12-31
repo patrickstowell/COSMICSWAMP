@@ -1,0 +1,15 @@
+{
+    "title": "Summary",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "gis:coord-system-alt",
+    "order": 3,
+    "widgets": [
+        {
+            "id": "geoptic-summary",
+            "type": "geoptic_run_summary",
+            "data": "",
+            "x":0, "y":0, "w":20, "h":10
+        }
+    ]
+}    

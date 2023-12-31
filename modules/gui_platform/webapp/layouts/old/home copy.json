@@ -1,0 +1,21 @@
+{
+    "title": "Home Dash",
+    "options": "",
+    "widgets": [
+        {
+            "id": "box1", 
+            "type":"simple_box", 
+            "lock": false,
+            "data": {"message": "Hello Box1"}
+        },
+        {
+            "id": "box2", 
+            "type":"simple_box", 
+            "lock": true, 
+            "style": {"background-color":"gray", "min-height":"300px", "min-width":"300px"} ,
+            "data": {"message": "Hello Box2" }
+        },
+        {"id": "pathset", "type":"orion_path_set", "lock": false, "data":"" },
+        {"id": "pathset2", "type":"orion_entity_view", "lock": false, "data":"" }
+    ]
+}

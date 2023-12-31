@@ -1,0 +1,102 @@
+{
+    "id": "entity-editor",
+    "title": "Entity Editor",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "line-md:edit-twotone",
+    "order": 4,
+    "functions": [
+        {
+            "id": "new_entity",
+            "type": "new_entity",
+            "icon": "line-md:edit-twotone"
+        }],    
+    "widgets": [
+        {
+            "id": "pathset",
+            "type": "orion_path_set",
+            "data": ""
+        },
+        {
+            "id": "serviceset",
+            "type": "orion_service_set",
+            "data": ""
+        },
+        {
+            "id": "entityset",
+            "type": "orion_entity_set",
+            "data": ""
+        },
+        {
+            "id": "entityview",
+            "type": "orion_entity_view",
+            "data": ""
+        },
+        {
+            "id": "entitymap",
+            "type": "orion_current_location_map",
+            "data": ""
+        },
+        {
+            "id": "attributeview",
+            "type": "orion_attribute_view",
+            "data": ""
+        }
+    ],
+    "layout": [
+        {
+            "w": 4,
+            "h": 3,
+            "x": 3,
+            "y": 0,
+            "i": "pathset-box",
+            "moved": false,
+            "static": false
+        },
+        {
+            "w": 3,
+            "h": 3,
+            "x": 0,
+            "y": 0,
+            "i": "serviceset-box",
+            "moved": false,
+            "static": false
+        },
+        {
+            "w": 5,
+            "h": 3,
+            "x": 7,
+            "y": 0,
+            "i": "entityset-box",
+            "moved": false,
+            "static": false
+        },
+        {
+            "w": 12,
+            "h": 20,
+            "x": 0,
+            "y": 4,
+            "i": "entityview-box",
+            "moved": false,
+            "static": false
+        },
+        {
+            "w": 4,
+            "h": 20,
+            "x": 0,
+            "y": 24,
+            "i": "entitymap-box",
+            "moved": false,
+            "static": false
+        },
+        {
+            "w": 8,
+            "h": 20,
+            "x": 4,
+            "y": 24,
+            "i": "attributeview-box",
+            "moved": false,
+            "static": false
+        }
+    ]
+}

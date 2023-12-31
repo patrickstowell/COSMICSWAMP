@@ -1,0 +1,15 @@
+{
+    "title": "Stability",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "line-md:home-md-twotone",
+    "order": 23,
+    "widgets": [
+        {
+            "id": "geoptic-stability",
+            "type": "geoptic_stability_view",
+            "data": "",
+            "x":0, "y":0, "w":6, "h":17
+        }
+    ]
+}    

@@ -1,0 +1,33 @@
+{
+    "title": "Metadata",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "gis:map-legend",
+    "order": 21,
+    "functions": [
+        { "id": "geoptic_process_runs",
+          "type": "geoptic_process_runs",
+          "data": "" }
+    ],
+    "widgets": [
+        
+        {
+            "id": "geoptic-viewlink",
+            "type": "geoptic_runlist_view",
+            "data": "",
+            "x":0, "y":0, "w":10, "h":5
+        },
+        {
+            "id": "geoptic-runpos",
+            "type": "geoptic_run_positions_view",
+            "data": "",
+            "x":6, "y":0, "w":10, "h":5
+        },
+        {
+            "id": "geoptic-metaview",
+            "type": "geoptic_metaentry_view",
+            "data": "",
+            "x":0, "y":15, "w":20, "h":5
+        }
+    ]
+}    

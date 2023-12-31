@@ -1,0 +1,9 @@
+{
+    "title": "Voxel-Mesh",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "gis:grid",
+    "order": 33,
+    "widgets": [
+    ]
+}    

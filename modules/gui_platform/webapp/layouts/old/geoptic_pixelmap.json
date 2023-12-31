@@ -1,0 +1,9 @@
+{
+    "title": "Pixel-Map",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "gis:layer-down",
+    "order": 34,
+    "widgets": [
+    ]
+}    

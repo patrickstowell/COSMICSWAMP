@@ -1,0 +1,100 @@
+{
+    "title": "Home",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "line-md:home-md-twotone",
+    "order": 1,
+    "widgets": [
+        {
+            "id": "entity-link",
+            "type": "link_card",
+            "data": {
+                "url": "/entity_editor",
+                "label": "Entity Editor",
+                "icon_color": "#999",
+                "icon_size": 60,
+                "icon": "line-md:home-md-twotone",
+                "className": "link-card"
+            },
+            "x":0, "y":0, "w":2, "h":11
+        },
+        {
+            "id": "service-link",
+            "type": "link_card",
+            "data": {
+                "url": "/entity_editor",
+                "label": "Services",
+                "icon_color": "#999",
+                "icon_size": 60,
+                "icon": "line-md:home-md-twotone",
+                "className": "link-card"
+            },
+            "x":2, "y":0, "w":2, "h":11
+        },
+        {
+            "id": "grafana-link",
+            "type": "link_card",
+            "data": {
+                "url": "http://localhost:3000",
+                "label": "Grafana",
+                "icon_color": "#999",
+                "icon_size": 60,
+                "icon": "line-md:home-md-twotone",
+                "className": "link-card"
+            },
+            "x":4, "y":0, "w":2, "h":11
+        },
+        {
+            "id": "crate-link",
+            "type": "link_card",
+            "data": {
+                "url": "http://localhost:4200",
+                "label": "CrateDB",
+                "icon_color": "#999",
+                "icon_size": 60,
+                "icon": "line-md:home-md-twotone",
+                "className": "link-card"
+            },
+            "x":6, "y":0, "w":2, "h":11
+        },
+        {
+            "id": "ttn-link",
+            "type": "link_card",
+            "data": {
+                "url": "https://au1.cloud.thethings.network/console/applications/cosmic-swamp-au-lanapre",
+                "label": "CS-TTN",
+                "icon_color": "#999",
+                "icon_size": 60,
+                "icon": "line-md:home-md-twotone",
+                "className": "link-card"
+            },
+            "x":8, "y":0, "w":2, "h":11
+        },
+        {
+            "id": "ec2-link",
+            "type": "link_card",
+            "data": {
+                "url": "amazon-ec2",
+                "label": "EC2",
+                "icon_color": "#999",
+                "icon_size": 60,
+                "icon": "line-md:home-md-twotone",
+                "className": "link-card"
+            },
+            "x":8, "y":0, "w":2, "h":11
+        },
+        {
+            "id": "swampapi-link",
+            "type": "link_card",
+            "data": {
+                "url": "http://localhost:5000",
+                "label": "CS-API",
+                "icon_color": "#999",
+                "icon_size": 60,
+                "icon": "line-md:paint-drop-half-filled-twotone",
+                "className": "link-card"
+            },
+            "x":8, "y":0, "w":2, "h":11
+        }
+    ]
+}    

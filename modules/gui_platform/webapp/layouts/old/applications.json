@@ -1,0 +1,53 @@
+{
+    "title": "Applications",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "line-md:clipboard-list-twotone",
+    "order": 3,
+    "widgets": [
+        {
+            "id": "pathset",
+            "type": "orion_path_set",
+            "data": ""
+        },
+        {
+            "id": "serviceset",
+            "type": "orion_service_set",
+            "data": ""
+        },
+        {
+            "id": "entityset",
+            "type": "orion_entity_set",
+            "data": ""
+        }
+    ],
+    "layout": [
+        {
+            "w": 4,
+            "h": 4,
+            "x": 3,
+            "y": 0,
+            "i": "pathset-box",
+            "moved": false,
+            "static": false
+        },
+        {
+            "w": 3,
+            "h": 4,
+            "x": 0,
+            "y": 0,
+            "i": "serviceset-box",
+            "moved": false,
+            "static": false
+        },
+        {
+            "w": 5,
+            "h": 4,
+            "x": 7,
+            "y": 0,
+            "i": "entityset-box",
+            "moved": false,
+            "static": false
+        }
+    ]
+}

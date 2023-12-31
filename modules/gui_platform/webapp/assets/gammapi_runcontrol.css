@@ -1,0 +1,37 @@
+.gammapi-running {
+    color: white;
+    background-color: green;
+    display: inline-flex;
+    flex-grow: 1;
+    width: "33%";
+    justify-content: center;
+    text-justify: center;
+}
+
+.gammapi-stopped {
+    color: white;
+    background-color: red;
+    display: inline-flex;
+    flex-grow: 1;
+    width: "33%";
+    justify-content: center;
+    text-justify: center;
+} 
+
+.gammapi-disabled {
+    color: lightgray;
+    background-color: white;
+    display: inline-flex;
+    flex-grow: 1;
+    width: "33%";
+    justify-content: center;
+} 
+
+.gammapi-enabled {
+    color: blue;
+    background-color: white;
+    display: inline-flex;
+    flex-grow: 1;
+    width: "33%";
+    justify-content: center;
+} 

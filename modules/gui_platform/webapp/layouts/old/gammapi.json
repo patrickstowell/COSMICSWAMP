@@ -1,0 +1,27 @@
+{
+    "title": "Gamma",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "line-md:home-md-twotone",
+    "order": 10,
+    "widgets": [
+        {
+            "id": "gammapi-startstop",
+            "type": "gammapi_startstop",
+            "data": {},
+            "x":0, "y":0, "w":10, "h":5
+        },
+        {
+            "id": "gammapi-mapping",
+            "type": "gammapi_mapping",
+            "data": {},
+            "x":10, "y":0, "w":10, "h":5
+        },
+        {
+            "id": "gammapi-spectrum",
+            "type": "gammapi_spectrum",
+            "data": {},
+            "x":0, "y":5, "w":20, "h":10
+        }
+    ]
+}    

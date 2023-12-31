@@ -1,0 +1,22 @@
+{
+    "title": "Services",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "line-md:home-md-twotone",
+    "order": 2,
+    "widgets": [
+        {
+            "id": "entity-link",
+            "type": "link_card",
+            "data": {
+                "url": "/entity_editor",
+                "label": "Entity Editor",
+                "icon_color": "#999",
+                "icon_size": 60,
+                "icon": "line-md:home-md-twotone",
+                "className": "link-card"
+            },
+            "x":0, "y":0, "w":2, "h":11
+        }
+    ]
+}    

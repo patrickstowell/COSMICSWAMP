@@ -1,0 +1,14 @@
+{
+    "title": "Map",
+    "type": "Single",
+    "options": "",
+    "icon": "geo:ui-earth-west",
+    "order": 0,
+    "widgets": [
+        {
+            "id": "site-map",
+            "type": "orion_full_site_map",
+            "data": ""
+        }
+    ]
+}    

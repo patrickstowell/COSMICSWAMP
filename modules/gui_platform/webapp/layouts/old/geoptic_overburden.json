@@ -1,0 +1,15 @@
+{
+    "title": "Overburden",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "gis:profile",
+    "order": 32,
+    "widgets": [
+        {
+            "id": "geoptic-overburden",
+            "type": "geoptic_overburden_model_view",
+            "data": "",
+            "x":0, "y":0, "w":20, "h":10
+        }
+    ]
+}    

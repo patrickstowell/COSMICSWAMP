@@ -1,0 +1,129 @@
+{
+    "title": "Home Dash",
+    "type": "GridLayout",
+    "options": "",
+    "order": 6,
+    "icon": "line-md:home-md-twotone",
+    "widgets": [
+        {
+            "id": "pathset",
+            "type": "orion_path_set",
+            "data": ""
+        },
+        {
+            "id": "serviceset",
+            "type": "orion_service_set",
+            "data": ""
+        },
+        {
+            "id": "entityset",
+            "type": "orion_entity_set",
+            "data": ""
+        },
+        {
+            "id": "entityview",
+            "type": "orion_entity_view",
+            "data": ""
+        },
+        {
+            "id": "entitymap",
+            "type": "orion_current_location_map",
+            "data": ""
+        },
+        {
+            "id": "attributeview",
+            "type": "orion_attribute_view",
+            "data": ""
+        },
+        {
+            "id": "cratetest",
+            "type": "crate_query_plot",
+            "data": {
+                "crate_url": "http://localhost:4200",
+                "sql_query": "SELECT time_index as time, airpressure, relativehumidity, airtemperature, rainfall FROM \"mtopeniot\".\"etweatherstation\" WHERE fiware_servicepath='/lanapre_pilot' AND entity_id='urn:ngsi-ld:WeatherStation:LanapreWeatherStation:001' ORDER BY time_index DESC LIMIT 1000;"
+            }
+        },
+        {
+            "id": "cratetest2",
+            "type": "crate_query_plot",
+            "data": {
+                "crate_url": "http://localhost:4200",
+                "sql_query": "SELECT time_index as time, airpressure, relativehumidity, airtemperature, rainfall FROM \"mtopeniot\".\"etweatherstation\" WHERE fiware_servicepath='/lanapre_pilot' AND entity_id='urn:ngsi-ld:WeatherStation:LanapreWeatherStation:001' ORDER BY time_index DESC LIMIT 1000;"
+            }
+        }
+    ],
+    "layout": [
+        {
+            "w": 4,
+            "h": 4,
+            "x": 3,
+            "y": 0,
+            "i": "pathset-box",
+            "moved": false,
+            "static": false
+        },
+        {
+            "w": 3,
+            "h": 4,
+            "x": 0,
+            "y": 0,
+            "i": "serviceset-box",
+            "moved": false,
+            "static": false
+        },
+        {
+            "w": 5,
+            "h": 4,
+            "x": 7,
+            "y": 0,
+            "i": "entityset-box",
+            "moved": false,
+            "static": false
+        },
+        {
+            "w": 12,
+            "h": 20,
+            "x": 0,
+            "y": 4,
+            "i": "entityview-box",
+            "moved": false,
+            "static": false
+        },
+        {
+            "w": 4,
+            "h": 18,
+            "x": 0,
+            "y": 24,
+            "i": "entitymap-box",
+            "moved": false,
+            "static": false
+        },
+        {
+            "w": 8,
+            "h": 18,
+            "x": 4,
+            "y": 24,
+            "i": "attributeview-box",
+            "moved": false,
+            "static": false
+        },
+        {
+            "w": 8,
+            "h": 25,
+            "x": 4,
+            "y": 42,
+            "i": "cratetest-box",
+            "moved": false,
+            "static": false
+        },
+        {
+            "w": 8,
+            "h": 25,
+            "x": 4,
+            "y": 42,
+            "i": "cratetest2-box",
+            "moved": false,
+            "static": false
+        }
+    ]
+}

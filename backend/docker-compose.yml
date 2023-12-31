@@ -1,0 +1,136 @@
+version: "3.5"
+services:
+      
+  backend-mosquitto:
+    image: eclipse-mosquitto
+    hostname: backend-mosquitto
+    container_name: backend-mosquitto
+    restart: always
+    volumes:
+      - ./data/backend-mosquitto/data:/data
+      - ./configuration/backend-mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    networks:
+      - default
+    expose:
+      - "1883"
+      - "9001"
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    
+  backend-mongodb:
+    image: mongo:3.6
+    hostname: backend-mongodb
+    container_name: backend-mongodb
+    command: --bind_ip_all --smallfiles
+    restart: always
+    volumes:
+      - ./data/backend-mongodb/data/db:/data/db
+    networks:
+      - default
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"
+    
+  backend-orion:
+    image: fiware/orion:2.2.0
+    hostname: backend-orion
+    container_name: backend-orion
+    command: -dbhost backend-mongodb -logLevel DEBUG -corsOrigin __ALL
+    entrypoint: ["sh", "-c", "rm /tmp/contextBroker.pid; /usr/bin/contextBroker -fg -multiservice -dbhost backend-mongodb -logLevel DEBUG"]
+    restart: always
+    depends_on:
+      - backend-mongodb
+    networks:
+      - default
+    expose:
+      - "1026"
+      - "8000"
+    ports:
+      - "1026:1026"
+      - "8000:8000"
+
+
+  backend-cratedb:
+    image: crate/crate:5.4.5
+    hostname: backend-cratedb
+    container_name: backend-cratedb
+    command: -Cnetwork.host=_eth0_ -Ccluster.name=democluster -Chttp.cors.enabled=true -Chttp.cors.allow-origin="*"
+    restart: always
+    networks:
+      - default
+    ports:
+      - "4200:4200"
+      - "4300:4300"
+    volumes:
+      - ./data/backend-cratedb/data:/data
+    
+  backend-quantumleap:
+    image: fiware/quantum-leap:0.8.3
+    hostname: backend-quantumleap
+    container_name: backend-quantumleap
+    restart: always
+    depends_on:
+      - backend-orion
+      - backend-cratedb
+    environment:
+      - CRATE_HOST=backend-cratedb
+      - CRATE_PORT=4200
+      - POSTGRES_HOST=backend-postgres
+      - TZ=America/Sao_Paulo
+    volumes: 
+      - ./data/backend-quantumleap/data:/data
+    networks:
+      - default
+    ports:
+      - "8668:8668"
+
+  backend-postgresql:
+    image: postgres:9.6-alpine
+    hostname: backend-postgres
+    container_name: backend-postgres
+    restart: always
+    depends_on:
+     - backend-mosquitto
+    environment:
+      - POSTGRES_PASSWORD=password
+      - TZ=America/Sao_Paulo
+    volumes:
+      - ./data/backend-postgresql/data:/var/lib/postgresql/data
+    networks:
+      - default
+    
+  backend-redis:
+    image: redis:4-alpine
+    hostname: backend-redis
+    container_name: backend-redis
+    restart: always
+    networks:
+      - default
+    depends_on:
+      - backend-mosquitto
+    environment:
+    - TZ=America/Sao_Paulo
+    volumes:
+    - ./data/backend-redis/data:/var/lib/redis/data
+
+  backend-grafana:
+    image: grafana/grafana
+    container_name: backend-grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - ./data/backend-grafanadb/:/var/lib/grafana
+    environment:
+      - HTTP_USER="{{ grafana_user }}"
+      - HTTP_PASS="{{ grafana_passwd }}"
+    restart: always
+
+
+
+
+
+networks:
+  default: {}
+    

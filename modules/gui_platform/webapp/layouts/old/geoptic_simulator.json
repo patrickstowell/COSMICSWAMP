@@ -1,0 +1,9 @@
+{
+    "title": "Simulator",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "gis:triangle-map",
+    "order": 41,
+    "widgets": [
+    ]
+}    

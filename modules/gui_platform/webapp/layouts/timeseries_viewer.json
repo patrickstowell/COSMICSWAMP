@@ -1,0 +1,35 @@
+{
+    "id": "location-editor",
+    "title": "Timeseries",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "line-md:edit-twotone",
+    "order": 4,
+    "functions": [],    
+    "widgets": [
+        {
+            "id": "entityset",
+            "type": "orion_entity_search_set",
+            "data": "",
+            "x":0, "y":0, "w":6, "h":2, "static": true
+        },
+        {
+            "id": "typeset",
+            "type": "orion_type_search_set",
+            "data": "",
+            "x":6, "y":0, "w":6, "h":2, "static": true
+        },
+        {
+            "id": "entityview",
+            "type": "orion_entity_view",
+            "data": "",
+            "x":0, "y":2, "w":6, "h":14, "static": true
+        },
+        {
+            "id": "timeseriesview",
+            "type": "orion_timeseries_view",
+            "data": "",
+            "x":6, "y":2, "w":6, "h":14, "static": true
+        }
+    ]
+}

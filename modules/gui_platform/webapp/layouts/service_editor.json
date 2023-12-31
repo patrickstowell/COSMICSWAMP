@@ -1,0 +1,22 @@
+{
+    "id": "service-editor",
+    "title": "Settings",
+    "type": "GridLayout",
+    "options": "",
+    "icon": "line-md:edit-twotone",
+    "order": 5,
+    "functions": [],    
+    "widgets": [
+        {
+            "id": "pathset",
+            "type": "orion_path_set",
+            "x":0, "y":0, "w":6, "h":2, "static": true
+        },
+        {
+            "id": "serviceset",
+            "type": "orion_service_set",
+            "data": "",
+            "x":7, "y":0, "w":6, "h":2, "static": true
+        }
+    ]
+}
