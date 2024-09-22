@@ -20,12 +20,13 @@ import time
 from pcse.db import NASAPowerWeatherDataProvider
 import yaml
 import pcse
-import pcse
 from pcse.models import Wofost72_WLP_FD
 from pcse.fileinput import CABOFileReader, YAMLCropDataProvider
 from pcse.db import NASAPowerWeatherDataProvider
 from pcse.util import WOFOST72SiteDataProvider
 from pcse.base import ParameterProvider
+
+
 import numpy as np
 import pandas as pd
 
@@ -38,8 +39,6 @@ simulation_refresh = True
 # SESSION CREATION STAGE
 #########################
 session = orion.session(servicepath=simulation_name)
-
-
 
 ################################
 # FIELD SOIL MOISTURE SIMULATION

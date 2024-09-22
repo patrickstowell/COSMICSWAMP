@@ -111,7 +111,7 @@ def average_zone(request: Request,
     # Get Time Series Weather Data since start of growing period
     print(request)
 
-    print("WEATHER FUSION CHECK")
+    print("WEATHER FUSION CHECK TESTING 2")
     weather_data = cosmicswamp.get_series_data_for_entity(request, "urn:ngsi-ld:WeatherStation:1", attrs=["time_index","airtemperature","airpressure","airhumidity","windspeed","winddirection","solarradiation","batteryvoltage","rainfall"], limit=100000, cuts=[f"time_index < {time_high}",f"time_index > {time_low}"])
     weather_df = []
     if len(weather_data) > 0:
@@ -362,85 +362,85 @@ def average_zone(request: Request,
 
         managementzone.update(request, entity_id, time_index=time_index, jsondata=zone)
 
-        nsteps = 0
-        while True:
-            nsteps += 1
+        # nsteps = 0
+        # while True:
+        #     nsteps += 1
 
 
-            with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
-                # List to store Future objects representing the running tasks
-                futures = []
+        #     with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
+        #         # List to store Future objects representing the running tasks
+        #         futures = []
 
-                # Submit the tasks to the executor
-                for member in ensemble:
-                    future = executor.submit(run_pcse_member_one_day, member)
-                    futures.append(future)
+        #         # Submit the tasks to the executor
+        #         for member in ensemble:
+        #             future = executor.submit(run_pcse_member_one_day, member)
+        #             futures.append(future)
 
-                # Wait for all tasks to complete
-                concurrent.futures.wait(futures)
+        #         # Wait for all tasks to complete
+        #         concurrent.futures.wait(futures)
 
-            results = [pd.DataFrame(member.get_output()).set_index("day").tail(1) for member in ensemble]
+        #     results = [pd.DataFrame(member.get_output()).set_index("day").tail(1) for member in ensemble]
 
-            combineddf = pd.concat(results)
-            combineddf = combineddf.reset_index()
+        #     combineddf = pd.concat(results)
+        #     combineddf = combineddf.reset_index()
 
-            meandf = combineddf.groupby("day").quantile(0.5)
-            mindf = combineddf.groupby("day").quantile(0.25)
-            maxdf = combineddf.groupby("day").quantile(0.75)
+        #     meandf = combineddf.groupby("day").quantile(0.5)
+        #     mindf = combineddf.groupby("day").quantile(0.25)
+        #     maxdf = combineddf.groupby("day").quantile(0.75)
 
-            meandf.reset_index(inplace=True)
-            maxdf.reset_index(inplace=True)
-            mindf.reset_index(inplace=True)
+        #     meandf.reset_index(inplace=True)
+        #     maxdf.reset_index(inplace=True)
+        #     mindf.reset_index(inplace=True)
 
-            df = meandf
-            df["day"] = pd.to_datetime(df.day)
-            df["unix"] = df["day"].astype(int) / 10**9
+        #     df = meandf
+        #     df["day"] = pd.to_datetime(df.day)
+        #     df["unix"] = df["day"].astype(int) / 10**9
 
-            row = df.tail(1)
-            zone["leafAreaIndex"] = orion.Number(row.LAI.values)
-            zone["rootDepth"] = orion.Number(row.RD.values)
-            zone["rootMoistureEstimate"] = orion.Number(row.SM.values)
-            zone["aboveGroundBiomass"] = orion.Number(row.TAGP.values)
-            zone["weightOrgans"] = orion.Number(row.TWLV.values)
-            zone["weightLeaves"] = orion.Number(row.SM.values)
-            zone["weightStems"] = orion.Number(row.TWST.values)
-            zone["weightRoots"] = orion.Number(row.TWRT.values)
-            zone["cropRadiationAbsorbed"] = orion.Number(row.TRA.values)
+        #     row = df.tail(1)
+        #     zone["leafAreaIndex"] = orion.Number(row.LAI.values)
+        #     zone["rootDepth"] = orion.Number(row.RD.values)
+        #     zone["rootMoistureEstimate"] = orion.Number(row.SM.values)
+        #     zone["aboveGroundBiomass"] = orion.Number(row.TAGP.values)
+        #     zone["weightOrgans"] = orion.Number(row.TWLV.values)
+        #     zone["weightLeaves"] = orion.Number(row.SM.values)
+        #     zone["weightStems"] = orion.Number(row.TWST.values)
+        #     zone["weightRoots"] = orion.Number(row.TWRT.values)
+        #     zone["cropRadiationAbsorbed"] = orion.Number(row.TRA.values)
 
-            row = mindf.tail(1)
-            zone["leafAreaIndexlow"] = orion.Number(row.LAI.values)
-            zone["rootDepthlow"] = orion.Number(row.RD.values)
-            zone["rootMoistureEstimatelow"] = orion.Number(row.SM.values)
-            zone["aboveGroundBiomasslow"] = orion.Number(row.TAGP.values)
-            zone["weightOrganslow"] = orion.Number(row.TWLV.values)
-            zone["weightLeaveslow"] = orion.Number(row.SM.values)
-            zone["weightStemslow"] = orion.Number(row.TWST.values)
-            zone["weightRootslow"] = orion.Number(row.TWRT.values)
-            zone["cropRadiationAbsorbedlow"] = orion.Number(row.TRA.values)
+        #     row = mindf.tail(1)
+        #     zone["leafAreaIndexlow"] = orion.Number(row.LAI.values)
+        #     zone["rootDepthlow"] = orion.Number(row.RD.values)
+        #     zone["rootMoistureEstimatelow"] = orion.Number(row.SM.values)
+        #     zone["aboveGroundBiomasslow"] = orion.Number(row.TAGP.values)
+        #     zone["weightOrganslow"] = orion.Number(row.TWLV.values)
+        #     zone["weightLeaveslow"] = orion.Number(row.SM.values)
+        #     zone["weightStemslow"] = orion.Number(row.TWST.values)
+        #     zone["weightRootslow"] = orion.Number(row.TWRT.values)
+        #     zone["cropRadiationAbsorbedlow"] = orion.Number(row.TRA.values)
 
-            row = maxdf.tail(1)
-            zone["leafAreaIndexhigh"] = orion.Number(row.LAI.values)
-            zone["rootDepthhigh"] = orion.Number(row.RD.values)
-            zone["rootMoistureEstimatehigh"] = orion.Number(row.SM.values)
-            zone["aboveGroundBiomasshigh"] = orion.Number(row.TAGP.values)
-            zone["weightOrganshigh"] = orion.Number(row.TWLV.values)
-            zone["weightLeaveshigh"] = orion.Number(row.SM.values)
-            zone["weightStemshigh"] = orion.Number(row.TWST.values)
-            zone["weightRootshigh"] = orion.Number(row.TWRT.values)
-            zone["cropRadiationAbsorbedhigh"] = orion.Number(row.TRA.values)
+        #     row = maxdf.tail(1)
+        #     zone["leafAreaIndexhigh"] = orion.Number(row.LAI.values)
+        #     zone["rootDepthhigh"] = orion.Number(row.RD.values)
+        #     zone["rootMoistureEstimatehigh"] = orion.Number(row.SM.values)
+        #     zone["aboveGroundBiomasshigh"] = orion.Number(row.TAGP.values)
+        #     zone["weightOrganshigh"] = orion.Number(row.TWLV.values)
+        #     zone["weightLeaveshigh"] = orion.Number(row.SM.values)
+        #     zone["weightStemshigh"] = orion.Number(row.TWST.values)
+        #     zone["weightRootshigh"] = orion.Number(row.TWRT.values)
+        #     zone["cropRadiationAbsorbedhigh"] = orion.Number(row.TRA.values)
 
 
-            zone["STATE"] = orion.String("FORECAST")
-            zone["TimeInstant"] = orion.TimeInstant((pd.to_datetime(time_index) + datetime.timedelta(days=nsteps)).isoformat())
-            zone["ForecastInstant"] = orion.TimeInstant(time_index)
-            print("Forecasted : ", zone["TimeInstant"])
+        #     zone["STATE"] = orion.String("FORECAST")
+        #     zone["TimeInstant"] = orion.TimeInstant((pd.to_datetime(time_index) + datetime.timedelta(days=nsteps)).isoformat())
+        #     zone["ForecastInstant"] = orion.TimeInstant(time_index)
+        #     print("Forecasted : ", zone["TimeInstant"])
 
-            cur_time = pd.to_datetime( zone["TimeInstant"]["value"] )
-            cut_time_end = (pd.to_datetime(avg_agro["end_date"]["value"]))
+        #     cur_time = pd.to_datetime( zone["TimeInstant"]["value"] )
+        #     cut_time_end = (pd.to_datetime(avg_agro["end_date"]["value"]))
 
-            if cur_time > cut_time_end: break
+        #     if cur_time > cut_time_end: break
 
-            managementzone.update(request, entity_id, time_index=(pd.to_datetime(time_index) + datetime.timedelta(days=nsteps)).isoformat(), jsondata=zone)
+        #     managementzone.update(request, entity_id, time_index=(pd.to_datetime(time_index) + datetime.timedelta(days=nsteps)).isoformat(), jsondata=zone)
 
     print("ManagementZone Finished for the day")
 

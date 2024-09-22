@@ -34,7 +34,11 @@ if (not cosmicswamp.has_session(session)):
 # FIELD CREATION
 #########################
 field_center = [-45.523917847717236,-12.170341419421398]
+
+print("Making field")
 information_platform.field.create(session, "Field:1", center_location=field_center, radius=600)
+
+print("Making split")
 information_platform.field.split_into_radial_zones(session, "Field:1", nradial=3, naround=3)
 
 #########################

@@ -105,8 +105,8 @@ def circle_around_point(point_in = None, radius=None, nsegments=12):
 
 
     p = polygon(segmentlist)
-    print(point_in)
-    print(p)
+    # print(point_in)
+    # print(p)
 
     return coerce(p)
 
@@ -120,9 +120,9 @@ def split_lat_lon_from_polygon(coords):
 
     if "coordinates" not in coords:
         coords = coords["value"]
-    print(coords)
+    # print(coords)
     latlonlist = coords["coordinates"][0]
-    print(latlonlist)
+    # print(latlonlist)
 
     latlist = []
     lonlist = []
@@ -135,7 +135,7 @@ def split_lat_lon_from_polygon(coords):
 def mean_lat_lon_from_polygon(coords):
 
     latlonlist = coords["value"]["coordinates"][0]
-    print(latlonlist)
+    # print(latlonlist)
 
     latlist = []
     lonlist = []
@@ -148,7 +148,7 @@ def mean_lat_lon_from_polygon(coords):
 def mean_lon_lat_from_polygon(coords):
 
     latlonlist = coords["value"]["coordinates"][0]
-    print(latlonlist)
+    # print(latlonlist)
 
     latlist = []
     lonlist = []

@@ -213,7 +213,7 @@ def update_entity(request: Request,
 
     # Now notify quantum leap
     # log.debug(router, "QUANTUM LEAP ", json.loads(json.dumps(body)))
-    url = "http://localhost:8668/v2/notify"
+    url = "http://backend-quantumleap:8668/v2/notify"
     body["id"] = entity_id
     body["type"] = entity_type
     # ngsi.pretty_log.debug(router, body)
@@ -466,6 +466,8 @@ def get_series_data_for_entity(request: Request,
                     ascending: bool = True
     ):
 
+    #print("GETTING SERIES DATA")
+
     # Get the orion entity from ORION to determine type.    
     entity_id = ngsi.format_id(entity_id)
     headers = orion.get_fiware_headers(request)
@@ -488,6 +490,7 @@ def get_series_data_for_entity(request: Request,
     sql += ' ' + crate.query_limit_filter(limit)
 
     log.debug(router, "SELECTION", sql)
+    #print("SETTINGS", settings().crate_pd)
     data = crate.query_retrieve_pandas(sql, settings().crate_pd)
 
     return data

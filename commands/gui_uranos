@@ -1,0 +1,2 @@
+docker exec -it -e DISPLAY=192.168.1.83:0 -v $PWD:$PWD -w $PWD backend-uranos uranos
+

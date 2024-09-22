@@ -24,6 +24,8 @@ from modules import fusion_platform
 ######################################
 app = FastAPI(debug=True)
 
+print("STARTING FASTAPI APP testing")
+
 ######################################
 # Logging definitions
 ######################################

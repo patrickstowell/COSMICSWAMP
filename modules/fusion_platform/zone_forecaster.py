@@ -1,19 +1,3 @@
-- ManagementZoneForecast
-- SimulationTime
-- SimulationCount
-- SimulationBranch 
-
-3 Possibilities, and ManagementZone do candidate1-4.
-- No Irrigation
-- Daily Irrigation 1
-- Daily Irrigation 2
-- Daily Irrigation 3
-
-Future weather forecaster. Uses ARIMA and current weather data for this zone.
-
-Zones should save "weather", "crop", "soil moisture", "soil", "agronomy"
-
-
 
 import pandas as pd
 import numpy as np

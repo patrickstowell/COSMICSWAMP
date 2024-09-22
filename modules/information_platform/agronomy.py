@@ -89,8 +89,8 @@ def pcse_agro_from_ngsi(data):
     variety_name = data["variety_name"]["value"]
 
 
-    start_date = datetime.datetime.fromisoformat(data["start_date"]["value"]).date()
-    end_date = datetime.datetime.fromisoformat(data["end_date"]["value"]).date()
+    start_date = pd.to_datetime([data["start_date"]["value"]])[0].date()
+    end_date = pd.to_datetime([data["end_date"]["value"]])[0].date()
     start_type = data["start_type"]["value"]
     end_type = data["end_type"]["value"]
     max_duration = int(data["max_duration"]["value"])

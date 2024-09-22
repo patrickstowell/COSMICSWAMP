@@ -374,7 +374,7 @@ class PandasWeatherDataProvider(WeatherDataProvider):
 
         # Make a future predictor for this site.
 
-        self.future_df = self.build_future_predictor()
+        #self.future_df = self.build_future_predictor()
 
         print("ANGSTA", self.ANGSTA, self.ANGSTB)
 
@@ -433,9 +433,12 @@ class PandasWeatherDataProvider(WeatherDataProvider):
         nasadf['Date'] = pd.to_datetime(nasadf['Date'])
         nasadf["Month"] = pd.PeriodIndex(nasadf['Date'], freq="W")
 
-        nasadf = nasadf.groupby("Month").mean().reset_index()
-        nasadf = nasadf.set_index("Date")
-        nasadf = nasadf.drop("Month", axis=1)
+
+        nasadf = nasadf.groupby("Date", "Month").mean().reset_index()
+        print(nasadf)
+
+        # nasadf = nasadf.set_index("Day")
+        # nasadf = nasadf.drop("Month", axis=1)
 
         for key in nasadf:
             if key == "Month": continue

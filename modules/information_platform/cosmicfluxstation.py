@@ -26,7 +26,6 @@ import modules.iot_platform.cosmicswamp as cosmicswamp
 import modules.information_platform.configuration as configuration
 import modules.information_platform.managementzone as managementzone
 
-
 ###################################################
 # ENTITY MODEL : CosmicFluxStation
 ###################################################
@@ -47,8 +46,8 @@ router = APIRouter(
 ################################################
 # PARAMETER DEFINITIONS
 ################################################
-def MessageIndex(value):                         return orion.Int(value)
-def RequestStatus(value):   return orion.String(value)
+def MessageIndex(value): return orion.Int(value)
+def RequestStatus(value): return orion.String(value)
 def NMDBStation(value): return orion.String(value)
 def NMDBBaseline(value): return orion.Number(value)
 def Intensity(value): return orion.Number(value)
@@ -150,7 +149,6 @@ def create(request: Request,
     ngsi.set_override(body, "relativeintensity", Intensity(relativeintensity))
     ngsi.set_override(body, "baselineintensity", Intensity(baselineintensity))
 
-    print("BODY", body)
     cosmicswamp.create_entity(request, entity_id, ENTITY_TYPE, jsondata=body)
     cosmicswamp.update_entity(request, entity_id, ENTITY_TYPE, jsondata=body)
 
@@ -192,9 +190,7 @@ def update(request: Request,
 
     ngsi.set_override(body, "status", RequestStatus(status))
 
-
     cosmicswamp.update_entity(request, entity_id, ENTITY_TYPE, jsondata=body)
-    print(body)
     return body
 
 
@@ -210,7 +206,6 @@ def refresh_event(time_end=datetime.datetime.now(), time_start=None):
     else:
         time_start = pd.to_datetime([time_end])[0]
         
-
     # Sessions need to be run for all possible maps.
     session_list = cosmicswamp.get_session()
     for pathcombo in session_list["sessions"]["value"]:
@@ -246,11 +241,12 @@ def refresh_event(time_end=datetime.datetime.now(), time_start=None):
 
                 update(session, wf["id"], jsondata=body, time_index=wf["TimeInstant"]["value"], status="REQUESTED" )
 
+
 ###################################################
 # REPEATED HANDLER
 ###################################################
 @router.on_event("startup")
-@repeat_every(seconds=600)  # 1 hour
+@repeat_every(seconds=3600)  # 1 hour
 def startup_event():
     refresh_event()
     

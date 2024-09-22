@@ -91,8 +91,8 @@ def get(url, headers, silentfail=False):
 def post(url, headers, json):
 
     headers["Content-Type"] = "application/json"
-
-    r = requests.post(url, headers=headers, json=json)
+    #print(url, headers, json)
+    r = requests.post(url, headers=headers, json=json, timeout=10)
     if r.status_code > 400:
         # print(url, r.text, headers, json)
         print(Fore.BLACK + "---------")
@@ -164,7 +164,7 @@ def build_geo_query(entity_type, coords, crs, maxDistance):
         coordstring += str(val[0]) + "," + str(val[1]) + ";"
     coordstring = coordstring.strip(";")
 
-    url = "http://localhost:1026/v2/entities?type=" + entity_type
+    url = "http://backend-orion:1026/v2/entities?type=" + entity_type
     if georel == "near":
         url += "&georel=near"
         url += ";maxDistance:" + str(maxDistance)
@@ -178,7 +178,7 @@ def build_geo_query(entity_type, coords, crs, maxDistance):
 # https://{{orion}}/v2/entities/?type=Building&georel=near;maxDistance:2000&geometry=point&coords=51.706774495,8.776277548
 
 # https://{{orion}}/v2/entities/?type=Building&georel=intersects&coords=51.70683451303916,8.77602696418762;51.706462195326104,8.776386380195618;51.70663838176868,8.776847720146177;51.706965820787424,8.776482939720154;51.70683451303916,8.77602696418762&geometry=polygon
-# GEOQUERY http://localhost:1026/v2/entities?type=Soil&georel=coveredBy&coords=-12.168005,-45.522538;-12.166836,-45.521848;-12.166294,-45.523917;-12.167643,-45.523918;-12.168005,-45.522538&geometry=polygon
+# GEOQUERY http://orion-backend:1026/v2/entities?type=Soil&georel=coveredBy&coords=-12.168005,-45.522538;-12.166836,-45.521848;-12.166294,-45.523917;-12.167643,-45.523918;-12.168005,-45.522538&geometry=polygon
 
     return url
 

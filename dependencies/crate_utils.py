@@ -73,6 +73,7 @@ def query_limit_filter(limit=100):
 def query_retrieve_pandas(sql, url):
 
     # Remove rows with NA.
+    print("RETRIEVING", sql, url)
     df = pd.read_sql(sql,  url)
     return [row.dropna().to_dict() for index,row in df.iterrows()]
   
