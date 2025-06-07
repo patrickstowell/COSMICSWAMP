@@ -130,7 +130,7 @@ def create(request: Request,
 
     body = cosmicswamp.build_entity_table(entity_id, "Soil", attrs, time_index, jsondata)
 
-    soil_template = CABOFileReader(f"./WOFOST_soil_parameters/{base}")
+    soil_template = CABOFileReader(f"./data/WOFOST_soil_parameters/{base}")
     
     for key in pcse_mapping: 
         if key in soil_template:
@@ -174,7 +174,7 @@ def create(request: Request,
 def pcse_soil_from_ngsi(insoil):
 
     base = insoil["baseSoil"]["value"]
-    soil_template = CABOFileReader(f"./WOFOST_soil_parameters/{base}")
+    soil_template = CABOFileReader(f"./data/WOFOST_soil_parameters/{base}")
 
     for key in pcse_mapping:
         convkey = pcse_mapping[key][0]

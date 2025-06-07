@@ -3,6 +3,18 @@ import json
 import math
 import numpy as np
 
+def reverse_latlon_pairs(latlon_pairs):
+    """
+    Reverses a list of (latitude, longitude) pairs to (longitude, latitude) pairs.
+    
+    Parameters:
+    latlon_pairs (list of tuples): List of (latitude, longitude) pairs.
+    
+    Returns:
+    list of tuples: List of (longitude, latitude) pairs.
+    """
+    return [(lon, lat) for lat, lon in latlon_pairs]
+    
 def latlon_distance(lat1, lon1, lat2, lon2):
     """
     Calculate the distance in meters between two latitude/longitude points on the Earth's surface.

@@ -77,3 +77,20 @@ def query_retrieve_pandas(sql, url):
     df = pd.read_sql(sql,  url)
     return [row.dropna().to_dict() for index,row in df.iterrows()]
   
+
+def query_cut_window(cuts):
+
+    if not cuts: return ""
+    if len(cuts) == 0: return ""
+
+    cutstr = ""
+    if len(cuts) == 2:
+        if not cuts[0]: cutstr += ""
+        else: cutstr += " AND time_index > " + str(cuts[0])
+
+        if not cuts[1]: cutstr += ""
+        else: cutstr += " AND time_index < " + str(cuts[1])
+
+        return cutstr
+    
+    return ""

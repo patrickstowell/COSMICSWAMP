@@ -183,7 +183,7 @@ def average_zone(request: Request,
     agro_provider = information_platform.agronomy.pcse_agro_from_ngsi(avg_agro)
     soil_provider = information_platform.soil.pcse_soil_from_ngsi(avg_soil)  
     site_provider = WOFOST72SiteDataProvider(WAV=20, SSMAX=1)
-    crop_provider = YAMLCropDataProvider(fpath="WOFOST_crop_parameters/")
+    crop_provider = YAMLCropDataProvider(fpath="data/WOFOST_crop_parameters/")
 
     parameter_provider = ParameterProvider(soildata=soil_provider,
                                             cropdata=crop_provider,

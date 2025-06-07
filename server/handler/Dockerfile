@@ -10,4 +10,11 @@ RUN python3 -m pip install PCSE==5.5.5 plotly==5.18.0
 RUN python3 -m pip install pmdarima==2.0.4 pvlib==0.10.3 pydantic==2.7.0 pydantic_settings==2.5.2 PyYAML==6.0.2 Requests==2.32.3 scikit_learn==1.3.1 
 RUN python3 -m pip install scipy==1.14.1 statsmodels==0.14.1 
 RUN python3 -m pip install uvicorn typing_inspect python-multipart pcse
-RUN python3 -m pip install "fastapi[standard]" postgres  SQLALCHEMY==2.0.0
+RUN python3 -m pip install "fastapi[standard]" postgres 
+RUN python3 -m pip install sqlalchemy-cratedb ipyleaflet pymysql psycopg2 sqlparse prettyprinter pypika
+#RUN python3 SQLALCHEMY==2.0.0
+#RUN python3 -m pip install jupyterlab
+#RUN apt install curl nodejs
+#RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
+#RUN nvm install 20.13.1
+#RUN jupyter labextension install jupyter-leaflet @jupyter-widgets/jupyterlab-manager

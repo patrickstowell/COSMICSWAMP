@@ -463,7 +463,8 @@ def get_series_data_for_entity(request: Request,
                     orderBy: str = "time_index",
                     groupBy: str = None,
                     cuts: List[str] = None,
-                    ascending: bool = True
+                    ascending: bool = True,
+                    time_index: List[int] = None
     ):
 
     #print("GETTING SERIES DATA")
@@ -480,11 +481,22 @@ def get_series_data_for_entity(request: Request,
     # Build request as usual
     headers = orion.get_fiware_headers(request)
 
+    attrs_full = ["time_index"]
+    if attrs:
+        print("ADDING NORMAL ATTRS")
+        attrs_full += attrs
+    else:
+        for skey in entity:
+            if skey in ["id","type"]:
+                continue
+            attrs_full.append(skey)
+
     sql = "SELECT"
-    sql += ' ' + crate.query_attrs(attrs)
+    sql += ' ' + crate.query_attrs(attrs_full)
     sql += ' ' + crate.query_table_from_headers_and_type(headers, entity_type) 
     sql += ' ' + crate.query_entity(entity_id)
     sql += ' ' + crate.query_cut_filter(cuts)
+    sql += ' ' + crate.query_cut_window(time_index)
     sql += ' ' + crate.query_groupby_filter(groupBy)
     sql += ' ' + crate.query_orderby_filter(orderBy, ascending)
     sql += ' ' + crate.query_limit_filter(limit)
@@ -521,6 +533,7 @@ def get_series_data_for_all_entities_of_type(request: Request,
     sql += ' ' + crate.query_orderby_filter(orderBy, ascending)
     sql += ' ' + crate.query_limit_filter(limit)
 
+    print("SSQL", sql)
     data = crate.query_retrieve_pandas(sql, settings().crate_pd)
 
     return data
@@ -639,3 +652,11 @@ def create_test():
 
 def delete_test(session):
     return delete_session(session)
+
+
+# Define shorthand aliases
+create = create_entity
+update = update_entity
+state  = estimate_entity_state_at_time
+series = get_series_data_for_entity
+delete = delete_entity

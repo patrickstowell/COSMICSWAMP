@@ -402,3 +402,10 @@ def simulate(request: Request,
 
     # Submit to ORION/CRATE
     cosmicswamp.update_entity(request, entity_id, ENTITY_TYPE, jsondata=body)
+
+
+payload = iotagent
+series = cosmicswamp.get_series_data_for_entity
+state  = cosmicswamp.estimate_entity_state_at_time
+forward  = calibrate_data_forward
+backward  = calibrate_data_backward
